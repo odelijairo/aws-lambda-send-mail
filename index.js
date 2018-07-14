@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
     const requestBody = JSON.parse(event.body);
     if (requestBody && (requestBody.mail || requestBody.phone)) {
       await sendEmail(requestBody);
-      response.body = 'success';
+      response.body = JSON.stringify({ status: 'success' });
       callback(null, response);
     } else {
       response.statusCode = 500;
